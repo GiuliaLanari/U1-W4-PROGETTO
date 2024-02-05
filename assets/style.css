@@ -2,14 +2,22 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  background-image: url(./assets/bg.jpg);
+  background-image: url(./bg.jpg);
   color: white;
-  font-family: "Outfit", sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
   background-size: cover;
+  font-size: 16px;
+  margin-top: 2rem;
+}
+
+main {
+  width: 70%;
+  margin-inline: auto;
 }
 
 h1,
@@ -29,18 +37,12 @@ h1 {
   color: #900080;
 }
 
-div {
-  border: 1px solid black;
-}
-
-.logo-container {
-  margin-inline: 3rem;
+.logo {
   text-align: left;
-  margin-top: 2rem;
 }
 
-.logo-container img {
-  width: 20%;
+.logo img {
+  width: 150px;
 }
 
 .question {
@@ -53,23 +55,23 @@ div {
   margin: 5rem;
 }
 
-button {
+.option {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 1rem 2rem;
   border-radius: 50px;
-  width: 20%;
+  width: 30%;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  margin: 0.5rem 0.8rem;
+  margin: 0.5rem 2rem;
 }
 
-button:hover {
+.option:hover {
   background: linear-gradient(to bottom, #d20094, #900080);
   cursor: pointer;
 }
 
 footer > div {
   letter-spacing: 2px;
-  margin-top: 10rem;
+  margin-top: 8rem;
 }
