@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+/*font-family: "Inter", sans-serif;
+font-family: "Outfit", sans-serif;*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  background-image: url(./assets/bg.jpg);
+}
+
+/*.logo {
+}*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+}
+h1 {
+  font-size: 60px;
+}
+
+.light-blue {
+  background-color: #00ffff;
+}
+
+/*.purple{
+    background-color: #D20094;
+    background-color: #900080;
+}*/
