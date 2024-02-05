@@ -1,19 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
-/*font-family: "Inter", sans-serif;
-font-family: "Outfit", sans-serif;*/
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
   background-image: url(./assets/bg.jpg);
+  color: white;
+  font-family: "Outfit", sans-serif;
+  text-align: center;
+  background-size: cover;
 }
-
-/*.logo {
-}*/
 
 h1,
 h2,
@@ -23,15 +20,56 @@ h5,
 h6 {
   font-family: "Outfit", sans-serif;
 }
+
 h1 {
   font-size: 60px;
 }
 
-.light-blue {
-  background-color: #00ffff;
+.purple {
+  color: #900080;
 }
 
-/*.purple{
-    background-color: #D20094;
-    background-color: #900080;
-}*/
+div {
+  border: 1px solid black;
+}
+
+.logo-container {
+  margin-inline: 3rem;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.logo-container img {
+  width: 20%;
+}
+
+.question {
+  font-size: 40px;
+  padding-inline: 5rem;
+  margin-bottom: 3rem;
+}
+
+.question-container {
+  margin: 5rem;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  width: 20%;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  margin: 0.5rem 0.8rem;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #d20094, #900080);
+  cursor: pointer;
+}
+
+footer > div {
+  letter-spacing: 2px;
+  margin-top: 10rem;
+}
