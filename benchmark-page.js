@@ -82,7 +82,76 @@ const questions = [
   },
 ];
 
+const startButton = document.getElementById("start-btn");
+const nextButton = document.getElementById("next-btn");
+
+const questionContainer = document.getElementsByClassName("question-container");
+
+const questionElement = document.getElementById("question");
+const optionButtons = document.getElementById("option-buttons");
+// let shuffledQuestions, currentQuestionIndex;
+
+// startButton.addEventListener("click", startQuiz);
+// nextButton.addEventListener("click", () => {
+//   currentQuestionIndex++;
+//   setNextQuestion;
+// });
+
+// function startQuiz() {
+//   startButton.classList.add("hide");
+//   shuffledQuestions = questions.sort(() => Math.floor(Math.random));
+// }
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function showQuestion() {
+  let currentQuestion = questions[currentQuestionIndex];
+  let questionNum = currentQuestionIndex + 1;
+  questionElement.innerHTML = questionNum + ". " + currentQuestion.question;
+
+  let allAnswers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
+  allAnswers = shuffle(allAnswers);
+  allAnswers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerHTML = answer;
+    button.classList.add("btn");
+    optionButtons.appendChild(button);
+  });
+
+  function shuffle(arr) {
+    let newArr = [];
+    arr = [...arr];
+    for (let i = 0; i < 4; i++) {
+      let rand = Math.floor(Math.random() * arr.length);
+      const element = arr[rand];
+      newArr.push(element);
+      arr.splice(rand, 1);
+    }
+    return newArr;
+  }
+
+  function nextButton() {
+    const nextBtn = document.getElementById("next-btn");
+  }
+
+  // for (let i = 0; i < questions.length; i++) {
+  //   // console.log(questions[i].correct_answer);
+  //   const input = document.getElementsByClassName("option");
+  //   const domande = questions[i].question;
+  //   const correctAns = questions[i].correct_answer;
+  //   const incorrectAns = questions[i].incorrect_answers;
+  //   for (let j = 0; j < questions.length; j++) {
+  //     const element = questions[j];
+  //   }
+
+  // }
+  // const answers = document.getElementsByClassName("option");
+  // answers.innerHTML = currentQuestion.incorrect_answers;
+}
+
 window.onload = function () {
+  showQuestion();
   // TIPS:
   // SE MOSTRI TUTTE LE RISPOSTE ASSIEME IN FORMATO LISTA:
   // Per ogni domanda, crea un container e incorporale tutte all'interno.
