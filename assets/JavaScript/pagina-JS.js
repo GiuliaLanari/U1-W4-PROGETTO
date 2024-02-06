@@ -10,8 +10,6 @@ const funzionamentoBottobeWelcome = bottoneWelcomePage.addEventListener("click",
   }
 });
 
-funzionamentoBottobeWelcome();
-
 //Benchmark Page
 
 const questions = [
@@ -103,4 +101,6 @@ const questions = [
 //Feedback Page
 
 // CHIAMATE DELLE FUNZIONI
-window.onload = function () {};
+window.onload = function () {
+  funzionamentoBottobeWelcome();
+};
