@@ -1,34 +1,17 @@
 //WELCOME PAGE
 
-const checkbox = document.getElementById("procedi");
-const pulsante = document.getElementById("pulsante");
-pulsante.disabled = true;
-
-/*const bottoneStat = checkbox.addEventListener("change", function () {
-  // pulsante.disabled = !checkbox.checked;
-  bottoneWelcomePage.onclick = () => {
-    if (!checkbox.checked) {
-      window.alert("Non hai selezionato il consenso della checkbox!");
-    }
-  };
-});
-bottoneStat();
-
-*/
-
 const bottoneWelcomePage = document.querySelector(".bottone-azzurro");
+const checkbox = document.querySelector(".checkbox");
 
-const funzionamentoBottoneWelcome = function () {
-  const checkbox = document.querySelector(".checkbox");
+const funzionamentoBottobeWelcome = bottoneWelcomePage.addEventListener("click", function (event) {
+  if (!checkbox.checked) {
+    event.preventDefault();
+    alert("Non hai selezionato il consenso della checkbox!");
+  }
+});
 
-  bottoneWelcomePage.onclick = () => {
-    if (!checkbox.checked) {
-      window.alert("Non hai selezionato il consenso della checkbox!");
-      history.go(0);
-    }
-  };
-};
-funzionamentoBottoneWelcome();
+funzionamentoBottobeWelcome();
+
 //Benchmark Page
 
 const questions = [
