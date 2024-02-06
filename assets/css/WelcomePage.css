@@ -96,7 +96,7 @@ input {
   box-shadow: 0 0 10px 2px #00ffff;
   border: none;
   font-weight: 800;
-  /*margin-inline-start: 6rem;*/
+
   display: inline-block;
   margin-inline-start: 9rem;
 }
