@@ -154,7 +154,7 @@ const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options");
 
 function updateQuestionCounter(hasEnded = false) {
-  questionCounter.innerHTML = !hasEnded ? "QUESTION " + (questionNumber + 1) + " / " + questions.length : "";
+  questionCounter.innerHTML = !hasEnded ? "QUESTION " + (questionNumber + 1) + "/" + questions.length : "";
 }
 
 function showQuestion() {
