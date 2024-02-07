@@ -160,6 +160,13 @@ function showQuestion() {
   }
 }
 
+let questionNum = 1;
+function onClick() {
+  questionNum += 1;
+  const questionCount = (document.getElementById("number-of-question").innerHTML =
+    "QUESTION " + questionNum + " / " + questions.length);
+}
+
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
   if (!selectedOption) return;
@@ -182,6 +189,7 @@ function checkAnswer() {
   } else {
     showScore();
   }
+  onClick();
 }
 
 nextButton.addEventListener("click", checkAnswer);
