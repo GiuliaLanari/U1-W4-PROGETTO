@@ -82,13 +82,80 @@ const questions = [
   },
 ];
 
+// TIMER
+
+const semicircles = document.querySelectorAll(".semicircle");
+const timer = document.querySelector(".timer");
+
+// input
+
+const hr = 0;
+const min = 0;
+const sec = 60;
+
+const hours = hr * 3600000;
+const minutes = min * 60000;
+const seconds = sec * 1000;
+const setTime = hours + minutes + seconds;
+const startTime = Date.now();
+const futureTime = startTime + setTime;
+
+const timerLoop = setInterval(countDownTimer);
+countDownTimer();
+
+function countDownTimer() {
+  const currentTime = Date.now();
+  const remainingTime = futureTime - currentTime;
+  const angle = (remainingTime / setTime) * 360;
+
+  // progress indicator
+  if (angle > 180) {
+    semicircles[2].style.display = "none";
+    semicircles[0].style.transform = "rotate(180deg)";
+    semicircles[1].style.transform = `rotate(${angle}deg)`;
+  } else {
+    semicircles[2].style.display = "block";
+    semicircles[0].style.transform = `rotate(${angle}deg)`;
+    semicircles[1].style.transform = `rotate(${angle}deg)`;
+  }
+
+  //timer
+  const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((remainingTime / (1000 * 60)) % 60);
+  const secs = Math.floor((remainingTime / 1000) % 60);
+
+  timer.innerHTML = `
+  <div>${secs}</div>
+`;
+
+  //end
+  if (remainingTime < 0) {
+    clearInterval(timerLoop);
+    semicircles[0].style.display = "none";
+    semicircles[1].style.display = "none";
+    semicircles[2].style.display = "none";
+
+    timer.innerHTML = `
+    <div>0</div>
+  `;
+  }
+}
+////////
+///////////////
+///////SVILUPPO QUIZ///////
+//////////////
+///////
 let questionNumber = 0;
 let score = 0;
+const questionCounter = document.getElementById("number-of-question");
 
 const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options");
-const nextButton = document.getElementById("next-btn");
+
+function updateQuestionCounter(hasEnded = false) {
+  questionCounter.innerHTML = !hasEnded ? "QUESTION " + (questionNumber + 1) + " / " + questions.length : "";
+}
 
 function showQuestion() {
   const currentQuestion = questions[questionNumber];
@@ -170,12 +237,6 @@ function showQuestion() {
   }
 }
 
-let questionNum = 0;
-function onClick() {
-  questionNum += 1;
-  document.getElementById("number-of-question").innerHTML = "QUESTION " + questionNum + " / " + questions.length;
-}
-
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
   if (!selectedOption) return;
@@ -188,13 +249,14 @@ function checkAnswer() {
   }
 
   questionNumber++;
+
   if (questionNumber < questions.length) {
     showQuestion();
+    updateQuestionCounter();
   } else {
     showScore();
+    updateQuestionCounter(true);
   }
-  onClick();
-  onClick();
 }
 
 function showScore() {
@@ -203,4 +265,5 @@ function showScore() {
 
 window.onload = function () {
   showQuestion();
+  updateQuestionCounter();
 };
