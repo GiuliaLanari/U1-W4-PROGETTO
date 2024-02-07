@@ -138,6 +138,7 @@ a {
 
 .stella img {
   display: inline-block;
+  fill: red;
 }
 
 /*.purple{
