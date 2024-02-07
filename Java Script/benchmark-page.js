@@ -194,6 +194,7 @@ function checkAnswer() {
     showScore();
   }
   onClick();
+  onClick();
 }
 
 function showScore() {
