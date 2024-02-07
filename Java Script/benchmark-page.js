@@ -85,26 +85,10 @@ const questions = [
 let questionNumber = 0;
 let score = 0;
 
-//let timeLeft= document.querySelector(".time-left")
 const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options");
 const nextButton = document.getElementById("next-btn");
-//const countOfQuestions = document.querySelector(".number-of-questions");
-//let questionCount;
-//let count=11
-//let countDown
-/*
-const timerDisplay=()=>{
-  countDown=setInterval(()=>{
-    count--
-    timeLeft.innerHTML=`${count}s`
-    if (count==0){
-      clearInterval(countDown)
-      displayNext()
-    }
-  },1000);
-}*/
 
 function showQuestion() {
   const currentQuestion = questions[questionNumber];
@@ -180,11 +164,6 @@ function checkAnswer() {
 
   questionNumber++;
   if (questionNumber < questions.length) {
-    /*countOfQuestions.innerHTML = "QUESTION" + questionCount + 1 + " /10";
-    quizDisplay(questionCount);
-    count = 11;
-    clearInterval(countdown);
-    timerDisplay();*/
     showQuestion();
   } else {
     showScore();
@@ -192,204 +171,12 @@ function checkAnswer() {
   onClick();
 }
 
+function showScore() {
+  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
+}
+
 nextButton.addEventListener("click", checkAnswer);
 
 window.onload = function () {
   showQuestion();
 };
-
-/*
-let timeLeft=document.querySelector(".time-left")
-let quizContainer=document.getElementById("container")
-let nextBtn=document.getElementById("next-btn")
-let countOfQuestion=document.querySelector(".number-of-question")
-let displayContainer=document.getElementById("display-container")
-let scoreContainer=document.querySelector(".score-container")
-let userScore=document.getElementById("user_score")
-let startScreen=document.querySelector("start-screen")
-let startButton=document.getElementById("start-button")
-let questionCount
-let scoreCount=0
-let count=11
-let countDown
-
-restart.addEventListener("click", ()=>{
-  initial()
-  displayContainer.classList.remove("hide")
-  scoreContainer.classList.add("hide")
-})
-
-nextBtn.addEventListener("click",(displayNext=()=>{
-  questionCount+=1
-  if(questionCount===questions.length){
-    displayContainer.classList.add("hide")
-    scoreContainer.classList.remove("hide")
-    userScore.innerHTML="Your score is"+ scoreCount+" out of "+questionCount
-  }
-  else{
-    countOfQuestion.innerHTML=questionCount+1+" of "+questions.length+"questions"
-    quizDisplay(questionCount)
-    count=11
-    clearInterval(countDown)
-    timerDisplay()
-  }
-})
-);
-const timerDisplay=()=>{
-  countDown=setInterval(()=>{
-    count--
-    timeLeft.innerHTML='${count}s'
-    if(count===0){
-      clearInterval(countDown)
-      displayNext()
-    }
-  },1000)
-}
-
-const quizDisplay=(questionCount)=>{
-  let quizQuestions=document.querySelectorAll(".container-mid")
-  quizQuestions.forEach((question)=>{
-  })
-  question[questionCount].classList.remove("hide")
-}
-function quizGenerator(){
-  i.options.sort(()=>Math.random()-0.5)
-  let div=document.createElement("div")
-  div.classList.add("container-mid","hide")
-
-  countOfQuestion.innerHTML= "QUESTION "+ 1 +" / "+ questions.length
-
-  let questionDiv=document.createElement("p")
-  questionDiv.classList.add("question")
-  questionDiv.innerHTML=i.question
-  div.appendChild(questionDiv)
-
-  div.innerHTML+=`
-  <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
-  <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
-  <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
-  <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
-  `
-  quizContainer.appendChild(div)
-}
-
-function checker(userOption){
-  let userSolution=userOption.innerText
-  let question=document.getElementsByClassName("container-mid")[questionCount]
-  let options=question.querySelectorAll("option-div")
-
-  if(userSolution===questions[questionCount].correct_answer){
-    userOption.classList.add("correct")
-    scoreCount++
-  }else{
-    userOption.classList.add("incorrect")
-
-    options.forEach((element)=>{
-      if((element.innerText= questions[questionCount].correct_answer)){
-        element.classList.add("correct")
-      }
-    })
-  }
-
-  clearInterval(countDown)
-  options.forEach((element)=>{
-    element.disabled=true
-  })
-}
-
-
-function initial(){
-  quizContainer.innerHTML=""
-  questionCount=0
-  scoreCount=0
-  count=11
-  clearInterval(countDown)
-  timerDisplay()
-  quizGenerator()
-  quizDisplay(questionCount)
-}
-
-startButton.addEventListener("click", ())
-
-
-/*
-const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById("next-btn");
-const questionContainer = document.getElementsByClassName("question-container");
-const questionElement = document.getElementById("question");
-const optionButtons = document.getElementById("option-buttons");
-// let shuffledQuestions, currentQuestionIndex;
-
-// startButton.addEventListener("click", startQuiz);
-// nextButton.addEventListener("click", () => {
-//   currentQuestionIndex++;
-//   setNextQuestion;
-// });
-
-// function startQuiz() {
-//   startButton.classList.add("hide");
-//   shuffledQuestions = questions.sort(() => Math.floor(Math.random));
-// }
-
-let currentQuestionIndex = 0;
-let score = 0;
-
-function showQuestion() {
-  let currentQuestion = questions[currentQuestionIndex];
-  let questionNum = currentQuestionIndex + 1;
-  questionElement.innerHTML = questionNum + ". " + currentQuestion.question;
-
-  let allAnswers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
-  allAnswers = shuffle(allAnswers);
-  allAnswers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerHTML = answer;
-    button.classList.add("btn");
-    optionButtons.appendChild(button);
-  });
-
-  function shuffle(arr) {
-    let newArr = [];
-    arr = [...arr];
-    for (let i = 0; i < 4; i++) {
-      let rand = Math.floor(Math.random() * arr.length);
-      const element = arr[rand];
-      newArr.push(element);
-      arr.splice(rand, 1);
-    }
-    return newArr;
-  }
-
-  function nextButton() {
-    const nextBtn = document.getElementById("next-btn");
-  }
-
-  // for (let i = 0; i < questions.length; i++) {
-  //   // console.log(questions[i].correct_answer);
-  //   const input = document.getElementsByClassName("option");
-  //   const domande = questions[i].question;
-  //   const correctAns = questions[i].correct_answer;
-  //   const incorrectAns = questions[i].incorrect_answers;
-  //   for (let j = 0; j < questions.length; j++) {
-  //     const element = questions[j];
-  //   }
-
-  // }
-  // const answers = document.getElementsByClassName("option");
-  // answers.innerHTML = currentQuestion.incorrect_answers;
-}
-
-  // TIPS:
-  // SE MOSTRI TUTTE LE RISPOSTE ASSIEME IN FORMATO LISTA:
-  // Per ogni domanda, crea un container e incorporale tutte all'interno.
-  // Crea poi dei radio button
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
-  // con le risposte corrette e incorrette come opzioni
-  // (dovrai probabilmente cercare su un motore di ricerca come ottenere un valore da un radio button in JS per ottenere il punteggio finale)
-  //
-  // SE MOSTRI UNA DOMANDA ALLA VOLTA:
-  // Mostra la prima domanda con il testo e i radio button.
-  // Quando l'utente seleziona una risposta, passa alla domanda successiva dell'array e sostituisci quella precedentemente visualizzata con quella corrente,
-  // salvando le risposte dell'utente in una variabile
-
-*/
