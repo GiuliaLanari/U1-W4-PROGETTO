@@ -4,19 +4,25 @@ font-family: "Outfit", sans-serif;*/
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   background-image: url(../bg.jpg);
-  background-repeat: no-repeat;
   background-size: cover;
-  color: white;
+  margin-top: 2rem;
 }
 
-/*.logo {
-}*/
+.logo {
+  width: 150px;
+}
+
+main {
+  margin-inline: auto;
+  width: 800px;
+}
 
 h1,
 h2,
