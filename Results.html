@@ -10,28 +10,30 @@
     <main>
       <img class="logo" src="./assets/epicode_logo.png" alt="Epicode Logo" />
 
-      <h1>Results</h1>
-      <h3>The summary of your answers:</h3>
-      <div id="container">
-        <div>
-          <div>Correct</div>
-          <div>66.7%</div>
-          <div>4/6 questions</div>
-        </div>
-        <div>
-          <p>
-            Congratulations! You passed the exam. We'll send you the certificate in a few minutes. Check your email
-            (including promotions / spam folder)
-          </p>
-        </div>
-        <div>
-          <div>Wrong</div>
-          <div>33.3%</div>
-          <div>2/6 questions</div>
-        </div>
-      </div>
+      <section class="center-results">
+        <h1 class="bianco size">Results</h1>
+        <h2 class="bianco grandezza">The summary of your answers:</h2>
 
-      <button id="rate-us">RATE US</button>
+        <div class="contenitore-risultato bianco">
+          <div class="risposte-corette bianco">
+            <div>Correct</div>
+            <div>66.7%</div>
+            <div>4/6 questions</div>
+          </div>
+
+          <div class="contenitore-grafico">GRAFICO</div>
+
+          <div class="risposte-sbagliate bianco">
+            <div>Wrong</div>
+            <div>33.3%</div>
+            <div>2/6 questions</div>
+          </div>
+        </div>
+
+        <button id="rate-us">RATE US</button>
+      </section>
     </main>
+
+    <script src="./assets/JavaScript/Results.js"></script>
   </body>
 </html>

@@ -53,3 +53,39 @@ h1 {
   padding-inline: 3.5rem;
   padding-block: 0.8rem;
 }
+
+.center-results {
+  text-align: center;
+}
+
+.bianco {
+  color: white;
+}
+
+.size {
+  font-size: 50px;
+}
+
+.grandezza {
+  font-weight: 100;
+  padding-block-end: 3rem;
+}
+
+.risposte-corette {
+  display: inline-block;
+  padding: 2rem;
+}
+
+.risposte-sbagliate {
+  display: inline-block;
+  padding: 2rem;
+}
+
+.contenitore-grafico {
+  display: inline-block;
+  margin-inline: 4rem;
+}
+
+.contenitore-risultato {
+  margin-block-end: 4rem;
+}
