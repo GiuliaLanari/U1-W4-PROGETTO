@@ -104,26 +104,38 @@ function showQuestion() {
       radio.type = "radio";
       radio.name = "option";
       radio.value = option;
+      radio.classList.add("option-input"); /////////NUOVO
 
       const label = document.createElement("label");
       label.innerText = option;
+      label.classList.add("styled-label"); ////////////NUOVO
 
-      const optionDiv = document.createElement("div");
-      optionDiv.appendChild(radio);
-      optionDiv.appendChild(label);
+      const optionsDiv = document.createElement("div");
+      optionsDiv.classList.add("options-container"); ////////////NUOVO
 
-      optionsContainer.appendChild(optionDiv);
+      optionsDiv.appendChild(radio);
+      optionsDiv.appendChild(label);
+
+      optionsContainer.appendChild(optionsDiv);
+
+      label.addEventListener("click", function () {
+        radio.checked = true;
+      });
+      label.addEventListener("click", checkAnswer);
     });
   } else if (currentQuestion.type === "boolean") {
     const optionTrue = document.createElement("input");
     optionTrue.type = "radio";
     optionTrue.name = "option";
     optionTrue.value = "True";
+    optionTrue.classList.add("option-input"); /////////NUOVO
 
     const trueLabel = document.createElement("label");
     trueLabel.innerText = "True";
+    trueLabel.classList.add("styled-label"); ////////////NUOVO
 
     const trueDiv = document.createElement("div");
+    trueDiv.classList.add("options-container"); ///////////NUOVO
     trueDiv.appendChild(optionTrue);
     trueDiv.appendChild(trueLabel);
 
@@ -131,17 +143,37 @@ function showQuestion() {
     falseOption.type = "radio";
     falseOption.name = "option";
     falseOption.value = "False";
+    falseOption.classList.add("option-input"); ////////////NUOVO
 
     const falseLabel = document.createElement("label");
     falseLabel.innerText = "False";
+    falseLabel.classList.add("styled-label"); ////////////NUOVO
 
     const falseDiv = document.createElement("div");
+    falseDiv.classList.add("options-container"); ////////////NUOVO
+
     falseDiv.appendChild(falseOption);
     falseDiv.appendChild(falseLabel);
 
     optionsContainer.appendChild(trueDiv);
     optionsContainer.appendChild(falseDiv);
+
+    trueDiv.addEventListener("click", function () {
+      optionTrue.checked = true;
+    });
+    trueDiv.addEventListener("click", checkAnswer);
+
+    falseDiv.addEventListener("click", function () {
+      falseOption.checked = true;
+    });
+    falseDiv.addEventListener("click", checkAnswer);
   }
+}
+
+let questionNum = 0;
+function onClick() {
+  questionNum += 1;
+  document.getElementById("number-of-question").innerHTML = "QUESTION " + questionNum + " / " + questions.length;
 }
 
 function checkAnswer() {
@@ -161,13 +193,12 @@ function checkAnswer() {
   } else {
     showScore();
   }
+  onClick();
 }
 
 function showScore() {
   quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
 }
-
-nextButton.addEventListener("click", checkAnswer);
 
 window.onload = function () {
   showQuestion();

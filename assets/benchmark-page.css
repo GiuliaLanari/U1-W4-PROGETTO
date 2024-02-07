@@ -102,3 +102,33 @@ h1 {
   background: linear-gradient(to bottom, #d20094, #900080);
   cursor: pointer;
 }
+
+/* Regole CSS per gli input */
+.option-input {
+  display: none;
+}
+
+.styled-label {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  width: 30%;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  margin: 0.5rem 2rem;
+  display: inline-block;
+}
+
+.styled-label:focus {
+  background-color: aqua;
+}
+
+.styled-label:hover {
+  color: #d20094;
+}
+
+/* Regole CSS per i div container */
+.options-container {
+  background-color: #00ffff1a;
+}
