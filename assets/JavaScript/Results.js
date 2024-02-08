@@ -1,4 +1,4 @@
-let questionNumber = 0;
+/*let questionNumber = 0;
 let score = 0;
 const questionCounter = document.getElementById("number-of-question");
 
@@ -89,7 +89,13 @@ function showQuestion() {
     falseDiv.addEventListener("click", checkAnswer);
   }
 }
+window.onload = function () {
+  showQuestion();
+  updateQuestionCounter();
+};
+////////////////////////////////////////
 
+///////////////////////////////////////
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
   if (!selectedOption) return;
@@ -112,15 +118,36 @@ function checkAnswer() {
   }
 }
 
-function showScore() {
-  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
-}
-
 /////////////////////////////////////////////////////////
 //////////////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////
-//RESULTES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 const semiCircleQuiz = document.querySelectorAll(".semicircle-quiz");
 
 const risposteCorette = document.querySelector(".risposte-corette");
@@ -134,14 +161,6 @@ const risposteSbagliate = document.querySelector(".risposte-sbagliate");
 
 
 
-
-
-
-
-window.onload = function () {
-  showQuestion();
-  updateQuestionCounter();
-};
 
 
 
@@ -216,7 +235,4 @@ function countRightAndWrong() {
   };
 }
 
-window.onload = function () {
-  showQuestion();
-  updateQuestionCounter();
-};
+
