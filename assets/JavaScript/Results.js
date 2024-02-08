@@ -1,238 +1,50 @@
-/*let questionNumber = 0;
-let score = 0;
-const questionCounter = document.getElementById("number-of-question");
+function showScore() {
+  const correctPercentage = (score / questions.length) * 100;
+  const correctScoreElement = document.createElement("p");
+  correctScoreElement.classList.add("score-percentage");
+  correctScoreElement.innerText = `${correctPercentage.toFixed(1)}%`;
 
-const quizContainer = document.getElementById("quiz-container");
-const questionElement = document.getElementById("question");
-const optionsContainer = document.getElementById("options");
+  const correctPercentageElement = document.createElement("p");
+  correctPercentageElement.classList.add("score/total");
+  correctPercentageElement.innerText = `${score}/${questions.length}`;
+  const correctParent = document.querySelector(".risposte-corette");
+  correctParent.appendChild(correctScoreElement);
+  correctParent.appendChild(correctPercentageElement);
 
-function updateQuestionCounter(hasEnded = false) {
-  questionCounter.innerHTML = !hasEnded ? "QUESTION " + (questionNumber + 1) + "/" + questions.length : "";
-}
+  const incorrectPercentage = 100 - correctPercentage;
+  const wrongScoreElement = document.createElement("p");
+  wrongScoreElement.classList.add("score-percentage");
+  wrongScoreElement.innerText = `${incorrectPercentage.toFixed(1)}%`;
+  const wrongPercentageElement = document.createElement("p");
+  wrongPercentageElement.classList.add("score/total");
+  wrongPercentageElement.innerText = `${questions.length - score}/${questions.length}`;
+  const wrongParent = document.querySelector(".risposte-sbagliate");
+  wrongParent.appendChild(wrongScoreElement);
+  wrongParent.appendChild(wrongPercentageElement);
 
-function showQuestion() {
-  const currentQuestion = questions[questionNumber];
-  questionElement.innerText = currentQuestion.question;
-  optionsContainer.innerHTML = "";
+  ////////////////////////////////////////////
+  const commentoRisultato = document.getElementsByClassName("commento-risultato")[0];
+  if (correctPercentage >= incorrectPercentage) {
+    const paragrafo1 = document.createElement("p");
+    paragrafo1.classList.add("paragrafo1");
+    paragrafo1.innerText = "Congratulations!";
+    commentoRisultato.appendChild(paragrafo1);
 
-  if (currentQuestion.type === "multiple") {
-    const options = currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer);
-    options.sort(() => Math.random() - 0.5);
+    const paragrafo2 = document.createElement("p");
+    paragrafo2.classList.add("paragrafo2");
+    paragrafo2.innerText = "You passed the exam.";
+    commentoRisultato.appendChild(paragrafo2);
 
-    options.forEach((option) => {
-      const radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "option";
-      radio.value = option;
-      radio.classList.add("option-input");
-
-      const label = document.createElement("label");
-      label.innerText = option;
-      label.classList.add("styled-label");
-
-      const optionsDiv = document.createElement("div");
-      optionsDiv.classList.add("options-container");
-
-      optionsDiv.appendChild(radio);
-      optionsDiv.appendChild(label);
-
-      optionsContainer.appendChild(optionsDiv);
-
-      label.addEventListener("click", function () {
-        radio.checked = true;
-      });
-      label.addEventListener("click", checkAnswer);
-    });
-  } else if (currentQuestion.type === "boolean") {
-    const optionTrue = document.createElement("input");
-    optionTrue.type = "radio";
-    optionTrue.name = "option";
-    optionTrue.value = "True";
-    optionTrue.classList.add("option-input");
-
-    const trueLabel = document.createElement("label");
-    trueLabel.innerText = "True";
-    trueLabel.classList.add("styled-label");
-
-    const trueDiv = document.createElement("div");
-    trueDiv.classList.add("options-container");
-    trueDiv.appendChild(optionTrue);
-    trueDiv.appendChild(trueLabel);
-
-    const falseOption = document.createElement("input");
-    falseOption.type = "radio";
-    falseOption.name = "option";
-    falseOption.value = "False";
-    falseOption.classList.add("option-input");
-
-    const falseLabel = document.createElement("label");
-    falseLabel.innerText = "False";
-    falseLabel.classList.add("styled-label");
-
-    const falseDiv = document.createElement("div");
-    falseDiv.classList.add("options-container");
-
-    falseDiv.appendChild(falseOption);
-    falseDiv.appendChild(falseLabel);
-
-    optionsContainer.appendChild(trueDiv);
-    optionsContainer.appendChild(falseDiv);
-
-    trueDiv.addEventListener("click", function () {
-      optionTrue.checked = true;
-    });
-    trueDiv.addEventListener("click", checkAnswer);
-
-    falseDiv.addEventListener("click", function () {
-      falseOption.checked = true;
-    });
-    falseDiv.addEventListener("click", checkAnswer);
-  }
-}
-window.onload = function () {
-  showQuestion();
-  updateQuestionCounter();
-};
-////////////////////////////////////////
-
-///////////////////////////////////////
-function checkAnswer() {
-  const selectedOption = document.querySelector('input[name="option"]:checked');
-  if (!selectedOption) return;
-
-  const answer = selectedOption.value;
-  const currentQuestion = questions[questionNumber];
-
-  if (answer === currentQuestion.correct_answer) {
-    score++;
-  }
-
-  questionNumber++;
-
-  if (questionNumber < questions.length) {
-    showQuestion();
-    updateQuestionCounter();
+    const paragrafo3 = document.createElement("p");
+    paragrafo3.classList.add("paragrafo3");
+    paragrafo3.innerText =
+      "We'll send you the certificate in a few minutes. Check your email (including promotions/ spam folder) ";
+    commentoRisultato.appendChild(paragrafo3);
   } else {
-    showScore();
-    updateQuestionCounter(true);
+    const paragrafo4 = document.createElement("p");
+    paragrafo4.classList.add("paragrafo4");
+    paragrafo4.innerText = "Exam failed!";
+    commentoRisultato.appendChild(paragrafo4);
   }
 }
-
-/////////////////////////////////////////////////////////
-//////////////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-const semiCircleQuiz = document.querySelectorAll(".semicircle-quiz");
-
-const risposteCorette = document.querySelector(".risposte-corette");
-const risposteSbagliate = document.querySelector(".risposte-sbagliate");
-
-//input
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function countRightAndWrong() {
-  //funzione che si collega al grafico
-
-  // funzione per trasformare il risultato in percentuale
-
-  // funzione per generare commento centrale
-
-  const commentoRisultato = document.getElementsByClassName("commento-risultato");
-
-  const feedbackRisultato = () => {
-    if (giusteRisposte > sbagliateRisposte) {
-      const paragrafo1 = document.createElement("p");
-      paragrafo1.classList.add("paragrafo1");
-      paragrafo1.innerText = "Congratulations!";
-      commentoRisultato.appendChild(paragrafo1);
-
-      const paragrafo2 = document.createElement("p");
-      paragrafo2.classList.add("paragrafo2");
-      paragrafo2.innerText = "You passed the exam.";
-      commentoRisultato.appendChild(paragrafo2);
-
-      const paragrafo3 = document.createElement("p");
-      paragrafo3.classList.add("paragrafo3");
-      paragrafo3.innerText =
-        "We'll send you the certificate in a few minutes. Check your email (including promotions/ spam folder) ";
-      commentoRisultato.appendChild(paragrafo3);
-    } else {
-      const paragrafo4 = document.createElement("p");
-      paragrafo4.classList.add("paragrafo4");
-      paragrafo4.innerText = "Exam failed!";
-      commentoRisultato.appendChild(paragrafo4);
-    }
-  };
-}
-
-
+showScore();
