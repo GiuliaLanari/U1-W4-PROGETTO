@@ -136,6 +136,14 @@ a {
   margin-block-start: 2rem;
 }
 
+.star {
+  cursor: pointer;
+}
+
+.active {
+  fill: yellow;
+}
+
 /*.purple{
   background-color: #D20094;
   background-color: #900080;
