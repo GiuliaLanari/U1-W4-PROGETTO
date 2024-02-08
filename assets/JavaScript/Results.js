@@ -112,6 +112,10 @@ function checkAnswer() {
   }
 }
 
+function showScore() {
+  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
+}
+
 /////////////////////////////////////////////////////////
 //////////////////////////////////////////////
 ///////////////////////////////////////
@@ -130,6 +134,14 @@ const risposteSbagliate = document.querySelector(".risposte-sbagliate");
 
 
 
+
+
+
+
+window.onload = function () {
+  showQuestion();
+  updateQuestionCounter();
+};
 
 
 

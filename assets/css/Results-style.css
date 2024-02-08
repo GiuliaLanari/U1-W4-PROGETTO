@@ -40,11 +40,6 @@ h1 {
   background-color: #00ffff;
 }
 
-/*.purple{
-    background-color: #D20094;
-    background-color: #900080;
-}*/
-
 #rate-us {
   background-color: transparent;
   color: white;
@@ -102,62 +97,25 @@ h1 {
 }
 
 .circle-container-quiz {
-  width: 290px;
-  height: 290px;
-
-  background-color: #ddd;
-  border-radius: 50%;
   position: absolute;
   overflow: hidden;
   z-index: 1;
+}
+
+.container {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+}
+
+.pie {
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(#d20094 0% 30%, #00ffff 0% 70%);
   mask-image: radial-gradient(circle farthest-side at center, transparent 70%, white 70%);
-}
-
-.semicircle-quiz {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: right center;
-}
-
-.semicircle-quiz:nth-child(1) {
-  background-color: #d20094;
-  z-index: 3;
-}
-
-.semicircle-quiz:nth-child(2) {
-  background-color: #00ffff;
-  z-index: 3;
-}
-
-.semicircle-quiz:nth-child(3) {
-  background-color: #ddd;
-  z-index: 4;
-}
-
-.outermost-quiz {
-  width: 150px;
-  height: 150px;
-  background-color: blue;
+  margin: 10px;
+  display: inline-block;
   border-radius: 50%;
-  z-index: 5;
-}
-
-.main-container-quiz:hover .semicircle-quiz:nth-child(1) {
-  transform: rotate(180deg);
-  transition: 1s linear;
-}
-
-.main-container-quiz:hover .semicircle-quiz:nth-child(2) {
-  transform: rotate(360deg);
-  transition: 2s linear;
-}
-
-.main-container-quiz:hover .semicircle-quiz:nth-child(3) {
-  opacity: 0;
-  transition: opacity 0s 1s;
 }
 
 .commento-risultato {
