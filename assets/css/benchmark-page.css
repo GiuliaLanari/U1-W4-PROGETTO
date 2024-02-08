@@ -164,7 +164,7 @@ h2 {
 
 /*//////////////////////////////*/
 #quiz-container {
-  margin-top: 8rem;
+  margin-top: 5rem;
 }
 
 #question {
@@ -174,7 +174,7 @@ h2 {
 }
 
 .question-container {
-  margin-top: 7rem;
+  margin-top: 9rem;
 }
 
 #options {
@@ -224,5 +224,5 @@ h2 {
   font-weight: bold;
 }
 .qustion-count {
-  margin: 9rem;
+  margin: 6rem;
 }
