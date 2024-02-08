@@ -1,4 +1,4 @@
-let questionNumber = 0;
+/*let questionNumber = 0;
 let score = 0;
 const questionCounter = document.getElementById("number-of-question");
 
@@ -89,7 +89,13 @@ function showQuestion() {
     falseDiv.addEventListener("click", checkAnswer);
   }
 }
+window.onload = function () {
+  showQuestion();
+  updateQuestionCounter();
+};
+////////////////////////////////////////
 
+///////////////////////////////////////
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
   if (!selectedOption) return;
@@ -111,38 +117,11 @@ function checkAnswer() {
     updateQuestionCounter(true);
   }
 }
-
+*/
 /////////////////////////////////////////////////////////
 //////////////////////////////////////////////
 ///////////////////////////////////////
 ///////////////////////////
-//RESULTES
-const semiCircleQuiz = document.querySelectorAll(".semicircle-quiz");
-
-const risposteCorette = document.querySelector(".risposte-corette");
-const risposteSbagliate = document.querySelector(".risposte-sbagliate");
-
-//input
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -169,6 +148,10 @@ const risposteSbagliate = document.querySelector(".risposte-sbagliate");
 
 
 /*
+const semiCircleQuiz = document.querySelectorAll(".semicircle-quiz");
+
+const risposteCorette = document.querySelector(".risposte-corette");
+const risposteSbagliate = document.querySelector(".risposte-sbagliate");
 function countRightAndWrong() {
   //funzione che si collega al grafico
 
@@ -204,7 +187,4 @@ function countRightAndWrong() {
   };
 }
 
-window.onload = function () {
-  showQuestion();
-  updateQuestionCounter();
-};
+
