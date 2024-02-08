@@ -8,7 +8,7 @@
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  background-image: url(../bg.jpg);
+  background-image: url(../imgs/bg.jpg);
   background-size: cover;
   margin-top: 2rem;
 }
@@ -42,33 +42,9 @@ h1 {
   margin-block-start: 3rem;
 }
 
-h2 {
-  color: white;
-  font-size: 60px;
-  margin-block-start: 0;
-}
-
-h3 {
-  color: #d20094;
-  font-size: 32px;
-  margin-block-end: 0;
-  margin-block-start: 1rem;
-}
-
-p {
+.paragrafo-feedback {
   color: white;
   margin-block-start: 2rem;
-  font-weight: 400;
-}
-
-ul {
-  color: white;
-  font-weight: 400;
-  margin-block: 1rem;
-}
-
-input {
-  color: white;
   font-weight: 400;
 }
 
@@ -105,11 +81,6 @@ input {
   display: inline-block;
   margin-inline-start: 9rem;
 }
-a {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-}
 
 #input-feedback {
   width: 500px;
@@ -117,6 +88,8 @@ a {
   background: none;
   border: none;
   border-block-end: 1px solid #d20094;
+  color: white;
+  font-weight: 400;
 }
 
 .bottone-azzurro-feedback {
@@ -140,11 +113,6 @@ a {
   cursor: pointer;
 }
 
-.active {
+.active:hover {
   fill: yellow;
 }
-
-/*.purple{
-  background-color: #D20094;
-  background-color: #900080;
-}*/
