@@ -260,8 +260,19 @@ function checkAnswer() {
 }
 
 function showScore() {
-  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
+  const correctPercentage = (score / questions.length) * 100;
+  const incorrectPercentage = 100 - correctPercentage;
+
+  quizContainer.innerHTML = `
+    <h2>Your Score: ${score}/${questions.length}</h2>
+    <p>Correct Answers Percentage: ${correctPercentage.toFixed(1)}%</p>
+    <p>Incorrect Answers Percentage: ${incorrectPercentage.toFixed(1)}%</p>
+  `;
 }
+
+/*function showScore() {
+  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
+}*/
 
 window.onload = function () {
   showQuestion();
