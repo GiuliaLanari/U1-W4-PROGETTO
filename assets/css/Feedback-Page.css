@@ -113,6 +113,12 @@ h1 {
   cursor: pointer;
 }
 
-.active:hover {
-  fill: yellow;
+/*/////////////////////*/
+.star {
+  fill: #000;
+  transition: fill 0.1s;
+}
+
+.star.active {
+  fill: #05feff;
 }
