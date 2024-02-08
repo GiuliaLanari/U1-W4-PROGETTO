@@ -171,14 +171,14 @@ function showQuestion() {
       radio.type = "radio";
       radio.name = "option";
       radio.value = option;
-      radio.classList.add("option-input"); /////////NUOVO
+      radio.classList.add("option-input");
 
       const label = document.createElement("label");
       label.innerText = option;
-      label.classList.add("styled-label"); ////////////NUOVO
+      label.classList.add("styled-label");
 
       const optionsDiv = document.createElement("div");
-      optionsDiv.classList.add("options-container"); ////////////NUOVO
+      optionsDiv.classList.add("options-container");
 
       optionsDiv.appendChild(radio);
       optionsDiv.appendChild(label);
@@ -195,14 +195,14 @@ function showQuestion() {
     optionTrue.type = "radio";
     optionTrue.name = "option";
     optionTrue.value = "True";
-    optionTrue.classList.add("option-input"); /////////NUOVO
+    optionTrue.classList.add("option-input");
 
     const trueLabel = document.createElement("label");
     trueLabel.innerText = "True";
-    trueLabel.classList.add("styled-label"); ////////////NUOVO
+    trueLabel.classList.add("styled-label");
 
     const trueDiv = document.createElement("div");
-    trueDiv.classList.add("options-container"); ///////////NUOVO
+    trueDiv.classList.add("options-container");
     trueDiv.appendChild(optionTrue);
     trueDiv.appendChild(trueLabel);
 
@@ -210,14 +210,14 @@ function showQuestion() {
     falseOption.type = "radio";
     falseOption.name = "option";
     falseOption.value = "False";
-    falseOption.classList.add("option-input"); ////////////NUOVO
+    falseOption.classList.add("option-input");
 
     const falseLabel = document.createElement("label");
     falseLabel.innerText = "False";
-    falseLabel.classList.add("styled-label"); ////////////NUOVO
+    falseLabel.classList.add("styled-label");
 
     const falseDiv = document.createElement("div");
-    falseDiv.classList.add("options-container"); ////////////NUOVO
+    falseDiv.classList.add("options-container");
 
     falseDiv.appendChild(falseOption);
     falseDiv.appendChild(falseLabel);
