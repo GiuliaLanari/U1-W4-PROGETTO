@@ -91,7 +91,7 @@ const timer = document.querySelector(".timer");
 
 const hr = 0;
 const min = 0;
-const sec = 60;
+const sec = 10;
 
 const hours = hr * 3600000;
 const minutes = min * 60000;
@@ -154,7 +154,14 @@ const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options");
 
 function updateQuestionCounter(hasEnded = false) {
-  questionCounter.innerHTML = !hasEnded ? "QUESTION " + (questionNumber + 1) + "/" + questions.length : "";
+  questionCounter.innerHTML = !hasEnded
+    ? "QUESTION " +
+      (questionNumber + 1) +
+      "<span style='color: #900080;'>/</span>" +
+      "<span style='color: #900080;'>" +
+      questions.length +
+      "</span>"
+    : "";
 }
 
 function showQuestion() {
@@ -257,10 +264,6 @@ function checkAnswer() {
     showScore();
     updateQuestionCounter(true);
   }
-}
-
-function showScore() {
-  quizContainer.innerHTML = `<h2>Your Score: ${score}/${questions.length}</h2>`;
 }
 
 window.onload = function () {
