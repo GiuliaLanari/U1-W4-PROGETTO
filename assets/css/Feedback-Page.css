@@ -110,7 +110,7 @@ h2 {
 
 .bottone-azzurro-feedback:hover {
   color: #150f37d9;
-  transform: translateY(-0.25em);
+  transform: scale(1.5);
   box-shadow: -1px -1px 10px 3px #3fd9ff;
 }
 
