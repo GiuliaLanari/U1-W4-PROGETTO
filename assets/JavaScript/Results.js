@@ -82,7 +82,7 @@ const questions = [
   },
 ];
 
-let score = 8;
+let score = 10;
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////
@@ -141,5 +141,7 @@ function showScore() {
     contenitoreParagrafo.appendChild(paragrafo4);
     commentoRisultato.appendChild(contenitoreParagrafo);
   }
+  const linearGradientScore = document.getElementById("pie");
+  linearGradientScore.style.background = `conic-gradient(#d20094 0% ${incorrectPercentage}%, #00ffff 0% ${correctPercentage}%)`;
 }
 showScore();
