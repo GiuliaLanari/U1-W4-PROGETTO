@@ -108,10 +108,10 @@ h1 {
   margin: 10px;
 }
 
-.pie {
+#pie {
   width: 300px;
   height: 300px;
-  background: conic-gradient(#d20094 0% 30%, #00ffff 0% 70%); /*CREARE CON JAVASCRIPT*/
+  /*background: conic-gradient(#7978ff 0deg, #d20094 0% 30%, #00ffff 0% 70%); CREARE CON JAVASCRIPT*/
   mask-image: radial-gradient(circle farthest-side at center, transparent 70%, white 70%);
   margin: 10px;
   display: inline-block;
@@ -156,4 +156,9 @@ h1 {
 .score-percentage {
   font-size: 32px;
   font-weight: 600;
+}
+
+.ancora-results {
+  color: white;
+  text-decoration: none;
 }
