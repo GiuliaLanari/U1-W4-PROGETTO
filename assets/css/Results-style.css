@@ -47,6 +47,12 @@ h1 {
   font-size: large;
   padding-inline: 3.5rem;
   padding-block: 0.8rem;
+  transition: all 0.25s;
+}
+
+#rate-us:hover {
+  border-color: #00ffff;
+  box-shadow: 0px 0px 17px 0px #00ffff;
 }
 
 .center-results {
@@ -160,4 +166,9 @@ h1 {
 .ancora-results {
   color: white;
   text-decoration: none;
+  transition: all 0.25s;
+}
+
+.ancora-results:hover {
+  color: #00ffff;
 }
