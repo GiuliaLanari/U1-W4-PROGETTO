@@ -111,8 +111,6 @@ h1 {
 #pie {
   width: 300px;
   height: 300px;
-  /*background: conic-gradient(#7978ff 0deg, #d20094 0% 30%, #00ffff 0% 70%); CREARE CON JAVASCRIPT*/
-
   mask-image: radial-gradient(circle farthest-side at center, transparent 70%, white 70%);
   margin: 10px;
   display: inline-block;
