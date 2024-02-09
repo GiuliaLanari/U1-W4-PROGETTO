@@ -95,7 +95,7 @@ function showScore() {
 
   const correctPercentageElement = document.createElement("p");
   correctPercentageElement.classList.add("score-total");
-  correctPercentageElement.innerText = `${score}/${questions.length} questions`;
+  correctPercentageElement.innerText = `${score}/${questions.length}questions`;
   const correctParent = document.querySelector(".risposte-corette");
   correctParent.appendChild(correctScoreElement);
   correctParent.appendChild(correctPercentageElement);
@@ -106,7 +106,7 @@ function showScore() {
   wrongScoreElement.innerText = `${incorrectPercentage.toFixed(1)}%`;
   const wrongPercentageElement = document.createElement("p");
   wrongPercentageElement.classList.add("score-total");
-  wrongPercentageElement.innerText = `${questions.length - score}/${questions.length}  questions`;
+  wrongPercentageElement.innerText = `${questions.length - score}/${questions.length}questions`;
   const wrongParent = document.querySelector(".risposte-sbagliate");
   wrongParent.appendChild(wrongScoreElement);
   wrongParent.appendChild(wrongPercentageElement);
