@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@400;700&display=swap");
+/*font-family: "Inter", sans-serif;
+font-family: "Outfit", sans-serif;*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  background-image: url(../imgs/bg.jpg);
+  background-size: cover;
+  margin-top: 2rem;
+}
+
+.logo {
+  width: 150px;
+}
+
+main {
+  margin-inline: auto;
+  width: 800px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+}
+h1 {
+  font-size: 60px;
+}
+
+.light-blue {
+  background-color: #00ffff;
+}
+
+#rate-us {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  font-size: large;
+  padding-inline: 3.5rem;
+  padding-block: 0.8rem;
+  transition: all 0.25s;
+}
+
+#rate-us:hover {
+  border-color: #00ffff;
+  box-shadow: 0px 0px 17px 0px #00ffff;
+}
+
+.center-results {
+  text-align: center;
+}
+
+.bianco {
+  color: white;
+}
+
+.size {
+  font-size: 50px;
+}
+
+.grandezza {
+  font-weight: 100;
+  padding-block-end: 3rem;
+}
+
+.risposte-corette {
+  display: inline-block;
+  padding: 2rem;
+}
+
+.risposte-sbagliate {
+  display: inline-block;
+  padding: 2rem;
+}
+
+.contenitore-grafico {
+  display: inline-block;
+  margin-inline: 4rem;
+}
+
+.contenitore-risultato {
+  margin-block-end: 4rem;
+}
+
+.center-grafico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container-quiz {
+  width: 300px;
+  height: 300px;
+}
+
+.circle-container-quiz {
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.container {
+  float: left;
+  display: inline-block;
+  margin: 10px;
+}
+
+#pie {
+  width: 300px;
+  height: 300px;
+  mask-image: radial-gradient(circle farthest-side at center, transparent 70%, white 70%);
+  margin: 10px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.commento-risultato {
+  width: 500px;
+  height: 500px;
+  margin-inline: 7rem;
+}
+
+.contenitore-p {
+  display: block;
+  width: 200px;
+}
+
+.paragrafo1 {
+  color: white;
+}
+
+.paragrafo3 {
+  color: white;
+  font-size: 10px;
+  margin-block-start: 1rem;
+}
+
+.paragrafo4 {
+  color: white;
+  font-size: 20px;
+}
+
+.paragrafo2 {
+  color: #00ffff;
+  font-size: 16px;
+}
+
+.correct-wrong {
+  font-size: 32px;
+}
+
+.score-percentage {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.ancora-results {
+  color: white;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.ancora-results:hover {
+  color: #00ffff;
+}

@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Outfit:wght@500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-image: url(../imgs/bg.jpg);
+  height: 100vh;
+  color: white;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 16px;
+  margin-top: 2rem;
+}
+
+main {
+  width: 50%;
+  margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+#question {
+  margin-top: 3rem;
+  font-weight: 500;
+}
+
+.purple {
+  color: #900080;
+}
+
+.logo img {
+  width: 150px;
+  margin-top: 0.5rem;
+}
+
+/*TIMER CSS PROGETTAZIONE*/
+
+#flex-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-inline: 25%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container-timer {
+  width: 130px;
+  height: 130px;
+}
+
+/* progress indicator */
+
+.circle-container {
+  width: 150px;
+  height: 150px;
+
+  width: 120px;
+  height: 120px;
+
+  background-color: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  mask-image: radial-gradient(circle farthest-side at center, transparent 80%, white 80%);
+}
+
+.semicircle {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: right center;
+}
+
+.semicircle:nth-child(1) {
+  background-color: #00ffff;
+  z-index: 2;
+}
+
+.semicircle:nth-child(2) {
+  background-color: #00ffff;
+  z-index: 3;
+}
+
+.semicircle:nth-child(3) {
+  background-color: #ddd;
+  z-index: 4;
+}
+
+.outermost-circle {
+  width: 80px;
+  height: 120px;
+
+  width: 90px;
+  height: 90px;
+
+  background-color: blue;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+/* timer*/
+
+.timer-container {
+  width: 90px;
+  height: 70px;
+  flex-direction: column;
+  z-index: 6;
+}
+
+.timer {
+  z-index: 7;
+}
+
+.timer div {
+  font-size: 45px;
+  font-weight: 100;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+  color: rgba(255, 255, 255, 0.822);
+  font-family: "Inter", sans-serif;
+}
+
+.timer .colon {
+  background-color: transparent;
+  width: 10px;
+  margin-inline: 0;
+  padding-block-end: 15px;
+}
+
+.timer-text p {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.703);
+  font-family: "Inter", sans-serif;
+  line-height: 2;
+}
+
+/*//////////////////////////////*/
+#quiz-container {
+  margin-top: 8rem;
+}
+
+#question {
+  font-size: 40px;
+  padding-inline: 5rem;
+  margin-bottom: 3rem;
+}
+
+.question-container {
+  margin-top: 7rem;
+}
+
+#options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.options-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding-block: 1rem;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  margin: 0.5rem;
+  width: 44%;
+  border-color: #dddddd89;
+  border-top: 1.5px solid;
+  border-right: 0.3px solid rgba(255, 255, 255, 0.674);
+  border-left: 0.5px solid rgba(255, 255, 255, 0.671);
+  border-bottom: 0.3px solid rgba(255, 255, 255, 0.267);
+}
+
+.options-container:hover {
+  background-color: #900080;
+  background: linear-gradient(0deg, rgba(186, 0, 186, 0.434) 0%, rgba(144, 0, 128, 0.753180495831145) 33%);
+  border-bottom: 0.3px solid #900080;
+  border-right: 1px solid #90007f5d;
+}
+
+.styled-label {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.option-input {
+  display: none;
+}
+
+#number-of-question {
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+.qustion-count {
+  margin: 9rem;
+}
