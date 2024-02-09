@@ -96,10 +96,6 @@ const questions = [
   },
 ];
 
-//Results Page
-
-//Feedback Page
-
 // CHIAMATE DELLE FUNZIONI
 window.onload = function () {
   funzionamentoBottobeWelcome();
