@@ -89,25 +89,15 @@ const timer = document.querySelector(".timer");
 
 // input
 
-const hr = 0;
-const min = 0;
-const sec = 10;
+let sec = 10;
+let counter = sec;
 
-const hours = hr * 3600000;
-const minutes = min * 60000;
-const seconds = sec * 1000;
-const setTime = hours + minutes + seconds;
-const startTime = Date.now();
-const futureTime = startTime + setTime;
-
-const timerLoop = setInterval(countDownTimer);
-countDownTimer();
+let timerLoop;
 
 function countDownTimer() {
-  const currentTime = Date.now();
-  const remainingTime = futureTime - currentTime;
-  const angle = (remainingTime / setTime) * 360;
-
+  counter--;
+  const angle = (counter / sec) * 360;
+  console.log(angle);
   // progress indicator
   if (angle > 180) {
     semicircles[2].style.display = "none";
@@ -119,25 +109,19 @@ function countDownTimer() {
     semicircles[1].style.transform = `rotate(${angle}deg)`;
   }
 
-  //timer
-  const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
-  const mins = Math.floor((remainingTime / (1000 * 60)) % 60);
-  const secs = Math.floor((remainingTime / 1000) % 60);
-
   timer.innerHTML = `
-  <div>${secs}</div>
+  <div>${counter}</div>
 `;
 
   //end
-  if (remainingTime < 0) {
+  if (counter === 0) {
     clearInterval(timerLoop);
-    semicircles[0].style.display = "none";
-    semicircles[1].style.display = "none";
-    semicircles[2].style.display = "none";
-
+    counter = sec;
+    console.log(counter);
     timer.innerHTML = `
     <div>0</div>
   `;
+    nextQuestion();
   }
 }
 ////////
@@ -244,6 +228,44 @@ function showQuestion() {
   }
 }
 
+function nextQuestion() {
+  questionNumber++;
+
+  if (questionNumber < questions.length) {
+    showQuestion();
+    updateQuestionCounter();
+
+    clearInterval(timerLoop);
+    resetTimerValues();
+    counter = sec;
+    timerLoop = setInterval(countDownTimer, 1000);
+  } else {
+    showScore();
+    updateQuestionCounter(true);
+    clearInterval(timerLoop);
+    counter = sec;
+  }
+}
+
+function resetTimerValues() {
+  const angle = sec * 360;
+  console.log(angle);
+  // progress indicator
+  if (angle > 180) {
+    semicircles[2].style.display = "none";
+    semicircles[0].style.transform = "rotate(180deg)";
+    semicircles[1].style.transform = `rotate(${angle}deg)`;
+  } else {
+    semicircles[2].style.display = "block";
+    semicircles[0].style.transform = `rotate(${angle}deg)`;
+    semicircles[1].style.transform = `rotate(${angle}deg)`;
+  }
+
+  timer.innerHTML = `
+  <div>${sec}</div>
+`;
+}
+
 function checkAnswer() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
   if (!selectedOption) return;
@@ -254,19 +276,11 @@ function checkAnswer() {
   if (answer === currentQuestion.correct_answer) {
     score++;
   }
-
-  questionNumber++;
-
-  if (questionNumber < questions.length) {
-    showQuestion();
-    updateQuestionCounter();
-  } else {
-    showScore();
-    updateQuestionCounter(true);
-  }
+  nextQuestion();
 }
 
 window.onload = function () {
   showQuestion();
   updateQuestionCounter();
+  timerLoop = setInterval(countDownTimer, 1000);
 };
