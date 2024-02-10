@@ -117,3 +117,21 @@ h2 {
   fill: #05feff;
   cursor: pointer;
 }
+
+.feedback-ancora {
+  text-decoration: none;
+  color: #16153c;
+  font-weight: bolder;
+}
+
+.info {
+  display: block;
+  margin-block-start: 2rem;
+  color: #d20094;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.info:hover {
+  box-shadow: 5px 5px 10px #d20094, -5px -5px 10px #d20094;
+}

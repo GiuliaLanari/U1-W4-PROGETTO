@@ -50,3 +50,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+///////INVIO FEEDBACK (DA METTERE ALERT SE NON VI è UN CONTENUTO)///
+/*
+const inputTesto = document.querySelector("#input-feedback");
+console.log(inputTesto);
+const funzioneInvioFeedback = bottoneInvioFeedback.addEventListener("click", function (event) {
+  if (!inputTesto) {
+    event.preventDefault();
+    alert("Non hai inserito un feedback");
+  }
+});
+/////////PER PORTARE IL VALORE NELLA PAFINA DOPO L'INCIO///
+const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
+
+const form = document.getElementById("contenitore-inputFeedback");
+const inputText = document.getElementById("input-feedback");
+
+bottoneInvioFeedback.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const inputTextValue = inputText.value;
+
+  localStorage.setItem("inputValue", inputTextValue);
+
+  window.Location.href = "Invio-feedback-page.html";
+});
+*/
