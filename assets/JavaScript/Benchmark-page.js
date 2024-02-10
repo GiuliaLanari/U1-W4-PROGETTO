@@ -87,7 +87,7 @@ const questions = [
 const semicircles = document.querySelectorAll(".semicircle");
 const timer = document.querySelector(".timer");
 
-let sec = 10;
+let sec = 60;
 let counter = sec;
 
 let timerLoop;
@@ -96,6 +96,7 @@ function countDownTimer() {
   counter--;
   const angle = (counter / sec) * 360;
   console.log(angle);
+
   // progress indicator
   if (angle > 180) {
     semicircles[2].style.display = "none";

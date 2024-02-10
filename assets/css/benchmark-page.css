@@ -74,11 +74,9 @@ h2 {
 .circle-container {
   width: 150px;
   height: 150px;
-
   width: 120px;
   height: 120px;
-
-  background-color: #ddd;
+  background-color: thistle;
   border-radius: 50%;
   position: absolute;
   overflow: hidden;
@@ -106,7 +104,7 @@ h2 {
 }
 
 .semicircle:nth-child(3) {
-  background-color: #ddd;
+  background-color: thistle;
   z-index: 4;
 }
 
