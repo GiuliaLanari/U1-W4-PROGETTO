@@ -53,10 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 ///////INVIO FEEDBACK (DA METTERE ALERT SE NON VI è UN CONTENUTO)///
 /*
-const inputTesto = document.querySelector("#input-feedback");
-console.log(inputTesto);
+const inputTesto = document.getElementById("input-feedback");
+const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
+
 const funzioneInvioFeedback = bottoneInvioFeedback.addEventListener("click", function (event) {
-  if (!inputTesto) {
+  if (inputTesto.value !== "") {
     event.preventDefault();
     alert("Non hai inserito un feedback");
   }
