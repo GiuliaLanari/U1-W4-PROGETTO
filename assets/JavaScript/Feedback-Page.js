@@ -77,3 +77,30 @@ bottoneInvioFeedback.addEventListener("submit", function (e) {
   window.Location.href = "Invio-feedback-page.html";
 });
 */
+
+///////PROVA DUE trovare il commento del cliente e salvarlo in un array/////////
+/*
+const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
+
+const commento = [];
+
+console.log(commento);
+const funzioneInvioFeedback = function (e) {
+  e.preventDefault();
+  const inputTesto = document.getElementById("input-feedback");
+
+  const commentoStringa = "Questo è il tuo commento: " + inputTesto.value;
+  if (inputTesto.value !== "") {
+    commento.push(commentoStringa);
+    inputTesto.value = "";
+
+  } else {
+    alert("Devi inserire un commento per inviare un feedback!");
+  }
+};
+
+window.onload= function (){
+  funzioneInvioFeedback(commentoStringa)
+  
+}
+*/
