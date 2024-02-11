@@ -82,204 +82,315 @@ const questions = [
   },
 ];
 
-// TIMER
+function runBenchmark() {
+  // TIMER
 
-const semicircles = document.querySelectorAll(".semicircle");
-const timer = document.querySelector(".timer");
+  const semicircles = document.querySelectorAll(".semicircle");
+  const timer = document.querySelector(".timer");
 
-let sec = 60;
-let counter = sec;
+  let sec = 60;
+  let counter = sec;
 
-let timerLoop;
+  let timerLoop;
 
-function countDownTimer() {
-  counter--;
-  const angle = (counter / sec) * 360;
-  console.log(angle);
+  function countDownTimer() {
+    counter--;
+    const angle = (counter / sec) * 360;
+    console.log(angle);
 
-  // progress indicator
-  if (angle > 180) {
-    semicircles[2].style.display = "none";
-    semicircles[0].style.transform = "rotate(180deg)";
-    semicircles[1].style.transform = `rotate(${angle}deg)`;
-  } else {
-    semicircles[2].style.display = "block";
-    semicircles[0].style.transform = `rotate(${angle}deg)`;
-    semicircles[1].style.transform = `rotate(${angle}deg)`;
-  }
+    // progress indicator
+    if (angle > 180) {
+      semicircles[2].style.display = "none";
+      semicircles[0].style.transform = "rotate(180deg)";
+      semicircles[1].style.transform = `rotate(${angle}deg)`;
+    } else {
+      semicircles[2].style.display = "block";
+      semicircles[0].style.transform = `rotate(${angle}deg)`;
+      semicircles[1].style.transform = `rotate(${angle}deg)`;
+    }
 
-  timer.innerHTML = `
+    timer.innerHTML = `
   <div>${counter}</div>
 `;
 
-  //end
-  if (counter === 0) {
-    clearInterval(timerLoop);
-    counter = sec;
-    console.log(counter);
-    timer.innerHTML = `
+    //end
+    if (counter === 0) {
+      clearInterval(timerLoop);
+      counter = sec;
+      console.log(counter);
+      timer.innerHTML = `
     <div>0</div>
   `;
-    nextQuestion();
+      nextQuestion();
+    }
   }
-}
-////////
-///////////////
-///////SVILUPPO QUIZ///////
-//////////////
-///////
-let questionNumber = 0;
-let score = 0;
-const questionCounter = document.getElementById("number-of-question");
 
-const quizContainer = document.getElementById("quiz-container");
-const questionElement = document.getElementById("question");
-const optionsContainer = document.getElementById("options");
+  ///////SVILUPPO QUIZ///////
 
-function updateQuestionCounter(hasEnded = false) {
-  questionCounter.innerHTML = !hasEnded
-    ? "QUESTION " +
-      (questionNumber + 1) +
-      "<span style='color: #900080;'>/</span>" +
-      "<span style='color: #900080;'>" +
-      questions.length +
-      "</span>"
-    : "";
-}
+  let questionNumber = 0;
+  let score = 0;
+  const questionCounter = document.getElementById("number-of-question");
 
-function showQuestion() {
-  const currentQuestion = questions[questionNumber];
-  questionElement.innerText = currentQuestion.question;
-  optionsContainer.innerHTML = "";
+  const quizContainer = document.getElementById("quiz-container");
+  const questionElement = document.getElementById("question");
+  const optionsContainer = document.getElementById("options");
 
-  if (currentQuestion.type === "multiple") {
-    const options = currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer);
-    options.sort(() => Math.random() - 0.5);
+  function updateQuestionCounter(hasEnded = false) {
+    questionCounter.innerHTML = !hasEnded
+      ? "QUESTION " +
+        (questionNumber + 1) +
+        "<span style='color: #900080;'>/</span>" +
+        "<span style='color: #900080;'>" +
+        questions.length +
+        "</span>"
+      : "";
+  }
 
-    options.forEach((option) => {
-      const radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = "option";
-      radio.value = option;
-      radio.classList.add("option-input");
+  function showQuestion() {
+    const currentQuestion = questions[questionNumber];
+    questionElement.innerText = currentQuestion.question;
+    optionsContainer.innerHTML = "";
 
-      const label = document.createElement("label");
-      label.innerText = option;
-      label.classList.add("styled-label");
+    if (currentQuestion.type === "multiple") {
+      const options = currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer);
+      options.sort(() => Math.random() - 0.5);
 
-      const optionsDiv = document.createElement("div");
-      optionsDiv.classList.add("options-container");
+      options.forEach((option) => {
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "option";
+        radio.value = option;
+        radio.classList.add("option-input");
 
-      optionsDiv.appendChild(radio);
-      optionsDiv.appendChild(label);
+        const label = document.createElement("label");
+        label.innerText = option;
+        label.classList.add("styled-label");
 
-      optionsContainer.appendChild(optionsDiv);
+        const optionsDiv = document.createElement("div");
+        optionsDiv.classList.add("options-container");
 
-      label.addEventListener("click", function () {
-        radio.checked = true;
+        optionsDiv.appendChild(radio);
+        optionsDiv.appendChild(label);
+
+        optionsContainer.appendChild(optionsDiv);
+
+        label.addEventListener("click", function () {
+          radio.checked = true;
+        });
+        label.addEventListener("click", checkAnswer);
       });
-      label.addEventListener("click", checkAnswer);
-    });
-  } else if (currentQuestion.type === "boolean") {
-    const optionTrue = document.createElement("input");
-    optionTrue.type = "radio";
-    optionTrue.name = "option";
-    optionTrue.value = "True";
-    optionTrue.classList.add("option-input");
+    } else if (currentQuestion.type === "boolean") {
+      const optionTrue = document.createElement("input");
+      optionTrue.type = "radio";
+      optionTrue.name = "option";
+      optionTrue.value = "True";
+      optionTrue.classList.add("option-input");
 
-    const trueLabel = document.createElement("label");
-    trueLabel.innerText = "True";
-    trueLabel.classList.add("styled-label");
+      const trueLabel = document.createElement("label");
+      trueLabel.innerText = "True";
+      trueLabel.classList.add("styled-label");
 
-    const trueDiv = document.createElement("div");
-    trueDiv.classList.add("options-container");
-    trueDiv.appendChild(optionTrue);
-    trueDiv.appendChild(trueLabel);
+      const trueDiv = document.createElement("div");
+      trueDiv.classList.add("options-container");
+      trueDiv.appendChild(optionTrue);
+      trueDiv.appendChild(trueLabel);
 
-    const falseOption = document.createElement("input");
-    falseOption.type = "radio";
-    falseOption.name = "option";
-    falseOption.value = "False";
-    falseOption.classList.add("option-input");
+      const falseOption = document.createElement("input");
+      falseOption.type = "radio";
+      falseOption.name = "option";
+      falseOption.value = "False";
+      falseOption.classList.add("option-input");
 
-    const falseLabel = document.createElement("label");
-    falseLabel.innerText = "False";
-    falseLabel.classList.add("styled-label");
+      const falseLabel = document.createElement("label");
+      falseLabel.innerText = "False";
+      falseLabel.classList.add("styled-label");
 
-    const falseDiv = document.createElement("div");
-    falseDiv.classList.add("options-container");
+      const falseDiv = document.createElement("div");
+      falseDiv.classList.add("options-container");
 
-    falseDiv.appendChild(falseOption);
-    falseDiv.appendChild(falseLabel);
+      falseDiv.appendChild(falseOption);
+      falseDiv.appendChild(falseLabel);
 
-    optionsContainer.appendChild(trueDiv);
-    optionsContainer.appendChild(falseDiv);
+      optionsContainer.appendChild(trueDiv);
+      optionsContainer.appendChild(falseDiv);
 
-    trueDiv.addEventListener("click", function () {
-      optionTrue.checked = true;
-    });
-    trueDiv.addEventListener("click", checkAnswer);
+      trueDiv.addEventListener("click", function () {
+        optionTrue.checked = true;
+      });
+      trueDiv.addEventListener("click", checkAnswer);
 
-    falseDiv.addEventListener("click", function () {
-      falseOption.checked = true;
-    });
-    falseDiv.addEventListener("click", checkAnswer);
-  }
-}
-
-function nextQuestion() {
-  questionNumber++;
-
-  if (questionNumber < questions.length) {
-    showQuestion();
-    updateQuestionCounter();
-
-    clearInterval(timerLoop);
-    resetTimerValues();
-    counter = sec;
-    timerLoop = setInterval(countDownTimer, 1000);
-  } else {
-    showScore();
-    updateQuestionCounter(true);
-    clearInterval(timerLoop);
-    counter = sec;
-  }
-}
-
-function resetTimerValues() {
-  const angle = sec * 360;
-  console.log(angle);
-  // progress indicator
-  if (angle > 180) {
-    semicircles[2].style.display = "none";
-    semicircles[0].style.transform = "rotate(180deg)";
-    semicircles[1].style.transform = `rotate(${angle}deg)`;
-  } else {
-    semicircles[2].style.display = "block";
-    semicircles[0].style.transform = `rotate(${angle}deg)`;
-    semicircles[1].style.transform = `rotate(${angle}deg)`;
+      falseDiv.addEventListener("click", function () {
+        falseOption.checked = true;
+      });
+      falseDiv.addEventListener("click", checkAnswer);
+    }
   }
 
-  timer.innerHTML = `
+  function nextQuestion() {
+    questionNumber++;
+
+    if (questionNumber < questions.length) {
+      showQuestion();
+      updateQuestionCounter();
+
+      clearInterval(timerLoop);
+      resetTimerValues();
+      counter = sec;
+      timerLoop = setInterval(countDownTimer, 1000);
+    } else {
+      showResults();
+
+      updateQuestionCounter(true);
+      clearInterval(timerLoop);
+      counter = sec;
+    }
+  }
+
+  function resetTimerValues() {
+    const angle = sec * 360;
+    console.log(angle);
+    // progress indicator
+    if (angle > 180) {
+      semicircles[2].style.display = "none";
+      semicircles[0].style.transform = "rotate(180deg)";
+      semicircles[1].style.transform = `rotate(${angle}deg)`;
+    } else {
+      semicircles[2].style.display = "block";
+      semicircles[0].style.transform = `rotate(${angle}deg)`;
+      semicircles[1].style.transform = `rotate(${angle}deg)`;
+    }
+
+    timer.innerHTML = `
   <div>${sec}</div>
 `;
-}
-
-function checkAnswer() {
-  const selectedOption = document.querySelector('input[name="option"]:checked');
-  if (!selectedOption) return;
-
-  const answer = selectedOption.value;
-  const currentQuestion = questions[questionNumber];
-
-  if (answer === currentQuestion.correct_answer) {
-    score++;
   }
-  nextQuestion();
-}
 
-window.onload = function () {
-  showQuestion();
-  updateQuestionCounter();
-  timerLoop = setInterval(countDownTimer, 1000);
-};
+  function checkAnswer() {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+    if (!selectedOption) return;
+
+    const answer = selectedOption.value;
+    const currentQuestion = questions[questionNumber];
+
+    if (answer === currentQuestion.correct_answer) {
+      score++;
+    }
+    nextQuestion();
+  }
+
+  window.onload = function () {
+    showQuestion();
+    updateQuestionCounter();
+    timerLoop = setInterval(countDownTimer, 1000);
+  };
+}
+runBenchmark();
+
+function showResults() {
+  // reset di benchmark
+  document.body.innerHTML = "";
+  document.body.innerHTML = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./assets/css/Results-style.css" />
+      <title>Results Page</title>
+    </head>
+    <body>
+      <main>
+        <img class="logo" src="./assets/imgs/epicode_logo.png" alt="Epicode Logo" />
+  
+        <section class="center-results">
+          <h1 class="bianco size">Results</h1>
+          <h2 class="bianco grandezza">The summary of your answers:</h2>
+  
+          <div class="contenitore-risultato center-grafico">
+            <div class="main-container-quiz center-grafico">
+              <!-- PROGRESS INDICATOR-->
+              <div class="circle-container-quiz center-grafico bianco">
+                <div id="pie" class="pie"></div>
+              </div>
+              <!-- VALORI DELLA PERCENTUALE-->
+  
+              <div class="risposte-corette bianco">
+                <p class="correct-wrong">Correct</p>
+              </div>
+  
+              <div class="commento-risultato center-grafico">
+              </div>
+  
+              <div class="risposte-sbagliate bianco">
+                <p class="correct-wrong">Wrong</p>
+              </div>
+            </div>
+          </div>
+  
+          <button id="rate-us"><a href="Feedback-Page.html" class="ancora-results">RATE US</a></button>
+        </section>
+      </main>
+      <script src="./assets/JavaScript/Results.js"></script>
+    </body>
+  </html>
+  `;
+  //CODICE JS PER LA VISUALIZZAZIONE DEI RISULTATI
+  function showScore() {
+    const correctPercentage = (score / questions.length) * 100;
+    const correctScoreElement = document.createElement("p");
+    correctScoreElement.classList.add("score-percentage");
+    correctScoreElement.innerText = `${correctPercentage.toFixed(1)}%`;
+
+    const correctPercentageElement = document.createElement("p");
+    correctPercentageElement.classList.add("score-total");
+    correctPercentageElement.innerText = `${score}/${questions.length}questions`;
+    const correctParent = document.querySelector(".risposte-corette");
+    correctParent.appendChild(correctScoreElement);
+    correctParent.appendChild(correctPercentageElement);
+
+    const incorrectPercentage = 100 - correctPercentage;
+    const wrongScoreElement = document.createElement("p");
+    wrongScoreElement.classList.add("score-percentage");
+    wrongScoreElement.innerText = `${incorrectPercentage.toFixed(1)}%`;
+    const wrongPercentageElement = document.createElement("p");
+    wrongPercentageElement.classList.add("score-total");
+    wrongPercentageElement.innerText = `${questions.length - score}/${questions.length}questions`;
+    const wrongParent = document.querySelector(".risposte-sbagliate");
+    wrongParent.appendChild(wrongScoreElement);
+    wrongParent.appendChild(wrongPercentageElement);
+
+    ////////////////////////////////////////////
+    const commentoRisultato = document.getElementsByClassName("commento-risultato")[0];
+    const contenitoreParagrafo = document.createElement("div");
+    contenitoreParagrafo.classList.add("contenitore-p");
+
+    if (correctPercentage >= incorrectPercentage) {
+      const paragrafo1 = document.createElement("p");
+      paragrafo1.classList.add("paragrafo1");
+      paragrafo1.innerText = "Congratulations!";
+      contenitoreParagrafo.appendChild(paragrafo1);
+
+      const paragrafo2 = document.createElement("p");
+      paragrafo2.classList.add("paragrafo2");
+      paragrafo2.innerText = "You passed the exam.";
+      contenitoreParagrafo.appendChild(paragrafo2);
+
+      const paragrafo3 = document.createElement("p");
+      paragrafo3.classList.add("paragrafo3");
+      paragrafo3.innerText =
+        "We'll send you the certificate in a few minutes. Check your email (including promotions/ spam folder) ";
+      contenitoreParagrafo.appendChild(paragrafo3);
+
+      commentoRisultato.appendChild(contenitoreParagrafo);
+    } else {
+      const paragrafo4 = document.createElement("p");
+      paragrafo4.classList.add("paragrafo4");
+      paragrafo4.innerText = "Exam failed!";
+      contenitoreParagrafo.appendChild(paragrafo4);
+      commentoRisultato.appendChild(contenitoreParagrafo);
+    }
+    const linearGradientScore = document.getElementById("pie");
+    linearGradientScore.style.background = `conic-gradient(#d20094 0% ${incorrectPercentage}%, #00ffff 0% ${correctPercentage}%)`;
+  }
+  showScore();
+}
