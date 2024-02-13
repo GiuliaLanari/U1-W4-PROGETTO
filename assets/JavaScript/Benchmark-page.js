@@ -82,6 +82,8 @@ const questions = [
   },
 ];
 
+let score = 0;
+
 function runBenchmark() {
   // TIMER
 
@@ -128,7 +130,6 @@ function runBenchmark() {
   ///////SVILUPPO QUIZ///////
 
   let questionNumber = 0;
-  let score = 0;
   const questionCounter = document.getElementById("number-of-question");
 
   const quizContainer = document.getElementById("quiz-container");
@@ -286,8 +287,13 @@ function runBenchmark() {
 }
 runBenchmark();
 
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////
+//////////////////////////////////////
+
 function showResults() {
   // reset di benchmark
+
   document.body.innerHTML = "";
   document.body.innerHTML = `
   <!DOCTYPE html>
@@ -330,7 +336,7 @@ function showResults() {
           <button id="rate-us"><a href="Feedback-Page.html" class="ancora-results">RATE US</a></button>
         </section>
       </main>
-      <script src="./assets/JavaScript/Results.js"></script>
+      <script src="../JavaScript/Benchmark-page.js"></script>
     </body>
   </html>
   `;
