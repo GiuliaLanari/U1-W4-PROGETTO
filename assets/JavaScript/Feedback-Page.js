@@ -51,56 +51,60 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-///////INVIO FEEDBACK (DA METTERE ALERT SE NON VI è UN CONTENUTO)///
-/*
-const inputTesto = document.getElementById("input-feedback");
-const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
+////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////
+//PARTE INVIO FEEDBACK//////
 
-const funzioneInvioFeedback = bottoneInvioFeedback.addEventListener("click", function (event) {
-  if (inputTesto.value !== "") {
-    event.preventDefault();
-    alert("Non hai inserito un feedback");
-  }
-});
-/////////PER PORTARE IL VALORE NELLA PAFINA DOPO L'INCIO///
-const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
+function showFeedbak() {
+  document.body.innerHTML = "";
+  document.body.innerHTML = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/Invio-feedback.css" />
+    <title>Invio feedback</title>
+  </head>
+  <body>
+    <main>
+      <div class="logo">
+        <img src="./assets/imgs/epicode_logo.png" alt="logo Epicode" />
+      </div>
+      <h1>Grazie per il feedback!</h1>
+      <div id="commento"></div>
+    </main>
+    <script src="./assets/JavaScript/Feedback-Page.js"></script>
+  </body>
+</html>
+`;
+  ///////CODICE JS PER LA VISUALIZZAZIONE DEL FEEDBACK/////
+  ////// DA INSERIRE ///
+}
+////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////
+//////codice per salvare il commento del cliente////
 
-const form = document.getElementById("contenitore-inputFeedback");
-const inputText = document.getElementById("input-feedback");
-
-bottoneInvioFeedback.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const inputTextValue = inputText.value;
-
-  localStorage.setItem("inputValue", inputTextValue);
-
-  window.Location.href = "Invio-feedback-page.html";
-});
-*/
-
-///////PROVA DUE trovare il commento del cliente e salvarlo in un array/////////
 /*
 const bottoneInvioFeedback = document.querySelector(".bottone-azzurro-feedback");
 
 const commento = [];
-
 console.log(commento);
+
+const inputTesto = document.getElementById("input-feedback");
+commento.push;
+
 const funzioneInvioFeedback = function (e) {
-  e.preventDefault();
-  const inputTesto = document.getElementById("input-feedback");
-
-  const commentoStringa = "Questo è il tuo commento: " + inputTesto.value;
-  if (inputTesto.value !== "") {
+  if (inputTesto.value === "") {
+    const commentoStringa = "Questo è il tuo commento: " + inputTesto.value;
+    console.log(commentoStringa);
     commento.push(commentoStringa);
-    inputTesto.value = "";
 
-  } else {
-    alert("Devi inserire un commento per inviare un feedback!");
+    inputTesto.value = "";
   }
 };
 
-window.onload= function (){
-  funzioneInvioFeedback(commentoStringa)
-  
-}
+window.onload = function () {
+  funzioneInvioFeedback();
+};
 */
